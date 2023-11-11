@@ -85,3 +85,16 @@ Route::prefix('/test3')->group(function () {
         return $n;
     });
 });
+
+use App\Http\Controllers\PostController;
+// Маршрут, использующий контроллер
+//Route::get('/маршрут', ['полное имя контроллера', 'имя действия']);
+Route::get('/hi', ['App\Http\Controllers\PostController', 'hello']);
+
+// Передача параметра маршрута в контроллер
+Route::get('/hi/{name}', [PostController::class, 'hello2']);
+
+// Применение параметров маршрутов
+Route::get('/hello/{id}',       [PostController::class, 'hello3'])->where('id', '[0-3]');
+Route::get('/usercheck/{id}',   [PostController::class, 'city'  ])->where('id', '[1-5]');
+Route::get('/hello5/{id}',      [PostController::class, 'hello5'])->where('id', '[1-5]');
