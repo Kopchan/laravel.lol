@@ -42,4 +42,10 @@ class PostController extends Controller
       if ($users[$name]) return $users[$name];
       return "Нет такого пользователя!";
     }
+    public function hello6() {
+      return view('post.hello');
+    }
+    public function hello7($name) {
+      return view('post.hello7', ['name' => $name, 'title' => 'Заголовок22']);
+    }
 }
